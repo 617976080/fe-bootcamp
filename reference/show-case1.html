@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>今天吃什么</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        input, button {
+            margin: 10px 0;
+            padding: 5px;
+            width: 200px;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>今天吃什么</h1>
+        <input type="text" id="foodInput" placeholder="输入食物,用逗号分隔">
+        <button onclick="decideDinner()">决定</button>
+        <div id="result"></div>
+    </div>
+    <script>
+        function decideDinner() {
+            const foodInput = document.getElementById('foodInput');
+            const result = document.getElementById('result');
+            const foods = foodInput.value.split(',').map(food => food.trim()).filter(food => food !== '');
+            
+            if (foods.length === 0) {
+                result.textContent = '请输入至少一种食物';
+                return;
+            }
+
+            result.textContent = '正在决定...';
+            
+            setTimeout(() => {
+                const randomIndex = Math.floor(Math.random() * foods.length);
+                const chosenFood = foods[randomIndex];
+                result.textContent = `今天吃：${chosenFood}`;
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
+
