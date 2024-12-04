@@ -25,9 +25,6 @@
   - css 伪类
   - css 伪元素
 
-https://www.ruanyifeng.com/blog/2019/11/css-position.html - CSS定位
-
-
 依次完成任务一、任务二、任务三
 ### 任务一
 使用HTML + CSS实现同级目录下task.png中的小页面。
@@ -97,6 +94,3 @@ a:hover{}
 <a href="https://www.baidu.com">baidu</a>
 <div class="two-color-border"></div>
 ```
-
-### 任务四
-使用相对定位和绝对定位实现4.png的效果
