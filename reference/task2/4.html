@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Absolute Positioning Example</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: #f0f0f0;
+            border: 2px solid #333;
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            top: 0;
+            right: 0;
+            transform: translate(50%, -50%);
+            background-color: #ff0000;
+            color: white;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <span class="close">关闭</span>
+    </div>
+</body>
+</html>
