@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Absolute Positioning Example</title>
+    <style>
+        body{
+            background-color: #F8F8F8;
+        }
+        ul, li{
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            padding: 36px;
+            width: 640px;
+            height: 500px;
+            color: #333333;
+            background-color: #ffffff;
+        }
+
+        .base-information{
+        }
+        .scores-container{
+            /* background-color: #ffffff; */
+        }
+        .base-information .username{
+            font-size: 18px;
+            font-weight: bolder;
+        }
+
+        .scores-container .scores-number{
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .scores-container .scores-lable{
+            color: #999999;
+            font-size: 12px;
+        }
+
+        .avatar-container{
+            position: relative;
+            width: 96px;
+            height: 96px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .avatar-container .avatar{
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+        }
+        .name-container{
+            margin-top: 8px;
+            text-align: center;
+        }
+        .name-container img{
+            width: 16px;
+            height: 16px;
+        }
+        .sex{
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 24px;
+            height: 24px;
+        }
+        .scores-container{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between
+        }
+        .scores-container li{
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="base-information">
+            <div class="avatar-container">
+                <img class="avatar" src="./assets/avatar.jpg"/>
+                <img class="sex" src="./assets/icon-male.png" />
+            </div>
+            <div class="name-container">
+                <span class="username">昵称五个字</span>
+                <img src="./assets/icon.gif"/>
+                <img src="./assets/level-6.png"/>
+            </div>
+        </div>
+        <ul class="scores-container">
+            <li>
+                <span class="scores-number">135,822</span>
+                <span class="scores-lable">被访问量</span>
+            </li>
+            <li>
+                <span class="scores-number">263</span>
+                <span class="scores-lable">原创文章</span>
+            </li>
+            <li>
+                <span class="scores-number">21,658</span>
+                <span class="scores-lable">作者排名</span>
+            </li>
+            <li>
+                <span class="scores-number">224</span>
+                <span class="scores-lable">粉丝数量</span>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

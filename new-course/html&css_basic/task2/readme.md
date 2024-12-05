@@ -1,5 +1,23 @@
 # HTML&CSS Basic Task Two - CSS入门(part1:基本练习)
-## 必学内容
+## 课程大纲
+- HTML怎么拆解
+- 介绍CSS的选择器 
+    - 单个
+- CSS属性
+    - 继承：文本类、背景
+    - 非继承：布局相关 
+- 值和单位
+    - 枚举
+    - px
+- HTML元素
+    - 块状元素：传统的盒模型
+    - 行内元素：没有宽高
+- CSS盒模型
+- 水平居中- 最简单的方式
+- 圆角属性
+- 定位
+- 浏览器默认样式
+## 参考连接
 学习[CSS - 菜鸟教程](https://www.runoob.com/css/css-examples.html)中的：
   - css教程
   - css简介
