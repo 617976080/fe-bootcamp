@@ -17,6 +17,24 @@
 - 圆角属性
 - 定位
 - 浏览器默认样式
+- 溢出
+    - 单行文本溢出
+    - 多行文本溢出
+- 盒模型 - 两种模式
+    - content-box模式
+    - border-box模式
+- BFC - 都不会遇到
+
+- 布局定位展示相关属性
+    - postion: relative、fixed、absolute、static
+    - top、bottom、left、right
+        - relative
+        - absolute
+        - fixed - IOS11 Safair fiexed不起作用
+    - zIndex: 默认是0
+    - display： inline、block、none、flex
+    - box-sizing: content-box、border-box
+- 浏览器指纹技术
 ## 参考连接
 学习[CSS - 菜鸟教程](https://www.runoob.com/css/css-examples.html)中的：
   - css教程
