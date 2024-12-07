@@ -2,8 +2,9 @@
 
 ## 必学内容
 
-+ [JavaScript教程](https://www.runoob.com/js/js-tutorial.html)
++ [JavaScript教程](https://developer.mozilla.org/zh-CN/docs/Learn/JavaScript/First_steps)
     + JavaScript教程部分：从头看到JavaScript调试
+先看【JavaScript第一步】、【JavaScript基础】、【JavaScript对象介绍】
 
 看起来内容很多，但是像什么if、else、运算符、表达式每个语言都一样，学习的时候重点理解概念，语法不必强记，一开始生疏的时候就多翻手册就好，用多了自然会记得。对于数组、字符串之类的有很多函数，也不需要去看他们的例子，只要有个印象，大概有哪些能力就可以了，后面自然后慢慢熟练起来，也可以用的时候再看。
 
