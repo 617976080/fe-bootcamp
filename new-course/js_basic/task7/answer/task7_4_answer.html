@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>增强的Swiper演示</title>
+    <style>
+        /**
+        * 清空所有元素默认边距，具体见：https://developer.mozilla.org/zh-CN/docs/Web/CSS/Universal_selectors
+        **/
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .swiper-container {
+            position: relative;
+            margin: 0 auto;
+            width: 600px;
+            height: 400px;
+            overflow: hidden;
+        }
+        .swiper-content-wrapper {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .swiper-content {
+            flex-shrink: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .swiper-content img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .swiper-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .swiper-button-prev {
+            left: 10px;
+        }
+        .swiper-button-next {
+            right: 10px;
+        }
+        .swiper-pagination {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+        }
+        .swiper-pagination-bullet {
+            width: 10px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+        .swiper-pagination-bullet-active {
+            background: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="swiper-container">
+        <div class="swiper-content-wrapper">
+            <div class="swiper-content"><img src="/placeholder.svg?height=400&width=600" alt="幻灯片 1"></div>
+            <div class="swiper-content"><img src="/placeholder.svg?height=400&width=600" alt="幻灯片 2"></div>
+            <div class="swiper-content"><img src="/placeholder.svg?height=400&width=600" alt="幻灯片 3"></div>
+        </div>
+        <button class="swiper-button swiper-button-prev">←</button>
+        <button class="swiper-button swiper-button-next">→</button>
+        <div class="swiper-pagination"></div>
+    </div>
+
+    <script>
+        // 初始化元素
+        const $wrapper = document.querySelector('.swiper-content-wrapper');
+        const $slides = document.querySelectorAll('.swiper-content');
+        const $prevButton = document.querySelector('.swiper-button-prev');
+        const $nextButton = document.querySelector('.swiper-button-next');
+        const $pagination = document.querySelector('.swiper-pagination');
+        // 状态
+        let currentIndex = 0;
+        let autoplayInterval;
+
+        // 鼠标进入停止自动播放，移出恢复
+        const swiperContainer = document.querySelector('.swiper-container');
+        swiperContainer.addEventListener('mouseenter', stopAutoplay);
+        swiperContainer.addEventListener('mouseleave', startAutoplay);
+        
+        // 创建分页圆点
+        $slides.forEach((_, index) => {
+            const $bullet = document.createElement('div');
+            $bullet.setAttribute('class', 'swiper-pagination-bullet')
+            $bullet.addEventListener('mouseover', function(){
+                goToSlide(index)
+            });
+            $pagination.appendChild($bullet);
+        });
+
+        // 监听左右箭头点击事件
+        $prevButton.addEventListener('click', function(){
+            goToSlide(currentIndex - 1);
+            stopAutoplay();
+            startAutoplay();
+        });
+        $nextButton.addEventListener('click', function(){
+            goToSlide(currentIndex + 1);
+            stopAutoplay();
+            startAutoplay();
+        });
+
+        // 初始化
+        updatePagination();
+        startAutoplay();       
+
+        // 计算出真实跳转的下标
+        function getJumpIndex(index){
+            if (index < 0) {
+                return $slides.length - 1;
+            }
+            if (index >= $slides.length) {
+                return 0;
+            }
+            return index
+        }
+
+        function goToSlide(targetIndex) {
+            currentIndex = getJumpIndex(targetIndex);
+            $wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+            updatePagination();
+        }
+
+        function startAutoplay() {
+            autoplayInterval = setInterval(() => {
+                goToSlide(currentIndex + 1);
+            }, 3000); // 每3秒切换一次
+        }
+        function stopAutoplay() {
+            clearInterval(autoplayInterval);
+        }
+
+        function updatePagination() {
+            const $bullets = document.querySelectorAll('.swiper-pagination-bullet');
+            $bullets.forEach(($bullet, index) => {
+                if (index === currentIndex) {
+                    $bullet.classList.add('swiper-pagination-bullet-active');
+                } else {
+                    $bullet.classList.remove('swiper-pagination-bullet-active');
+                }
+            });
+        }  
+    </script>
+</body>
+</html>
+

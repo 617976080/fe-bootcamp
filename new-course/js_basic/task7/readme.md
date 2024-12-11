@@ -30,7 +30,10 @@ var listItems = document.getElementById('list').children;
 参考tab.gif实现， 注意默认有一个初始选项卡是展示的（比如例子里默认展示最新这个tab）
 
 ### 任务四：左右切换滑动组件
+
 建议自主思考1h，超过时间直接看答案。
++ [transform-MDN](https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform)
++ [transition-MDN](https://developer.mozilla.org/zh-CN/docs/Web/CSS/transition)
 完成一个轮播图， 效果见swiper.gif。 其实它只是在简单选项卡的基础上增加自动播放以及左右切换的效果。 不要求使用JS来实现动画（感兴趣也可以试一下）。
 
 ## 扩展资料
