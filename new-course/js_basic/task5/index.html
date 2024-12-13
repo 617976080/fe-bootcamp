@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>简单的加法计算器</title>
+    <title>实时输入显示</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,59 +12,55 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+            background-color: #f0f0f0;
         }
-        .calculator {
-            text-align: center;
+        .container {
+            box-sizing: border-box;
+            width: 300px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-        input {
-            width: 50px;
-            font-size: 18px;
-            margin: 0 5px;
+        .container input{
+            box-sizing: border-box;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
         }
-        button {
-            font-size: 18px;
-            margin: 0 5px;
+        #result {
+            min-height: 20px;
+            padding: 10px;
+            background-color: #e9e9e9;
+            border-radius: 4px;
         }
     </style>
 </head>
 <body>
-    <div id="main">
-        <button id="append">添加一行</button>
+    <div class="container">
+        <input type="text" id="input" placeholder="请输入内容">
+        <div id="result"></div>
     </div>
 
     <script>
-        var $main = document.querySelector("#main");
-        var $append = document.querySelector("#append");
-        var index = 0;
-        $append.addEventListener("click", function(){
-            const newCalculator = document.createElement("div");
-            newCalculator.setAttribute("class", "calculator");
-            newCalculator.innerHTML = `
-                <input type="number" class="num1" placeholder="0">
-                <span>+</span>
-                <input type="number" class="num2" placeholder="0">
-                <button class="submit-button" onClick="calculate(${index})">=</button>
-                <span class="result"></span>
-            `;
-            $main.appendChild(newCalculator);
-            index++;
-        });
-
-
-        function calculate(i) {
-            var calculator = document.querySelectorAll('.calculator')[i];
-            // 获取输入的数值
-            // 第一个值是Falsy就往后执行，boolean -> false，"", null
-            var a = parseFloat(calculator.querySelector('.num1').value) || 0; 
-            var b = parseFloat(calculator.querySelector('.num2').value) || 0;
-
-            // 计算结果
-            var sum = a + b;
-            // 结果
-
-            // 显示结果 -> 副作用
-            calculator.querySelector('.result').textContent = sum;
+        var $input = document.getElementById('input');
+        var $result = document.getElementById('result');
+        function validateInput() {
+            var value = $input.value;
+            console.log("debug: value is");
+            console.log(value);
+            if(!value){
+                $result.innerText = "输入不能为空";
+            }
         }
+        validateInput();
+        // 监听输入事件
+        $input.addEventListener('input', validateInput);
+
     </script>
 </body>
 </html>
+

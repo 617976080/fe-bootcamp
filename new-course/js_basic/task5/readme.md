@@ -15,7 +15,7 @@
 遇到没有见过的对象、函数就到MDN上查一下， 快速了解。
 一些思考的点可以尝试回答， 不必要花时间去找资料， 主要看下有没有一些灵感。
 
-
+参考： https://developer.mozilla.org/zh-CN/docs/Glossary/Falsy
 #### 判断当 a 等于不同值时下列代码输出什么
 
 ```javascript
@@ -31,6 +31,7 @@ if (a) {
   console.log(2);
 }
 ```
+参考： https://developer.mozilla.org/zh-CN/docs/Glossary/Type_Conversion
 
 ```javascript
 // 如果==更换为===会是什么样的结果
@@ -38,7 +39,7 @@ let a = "";
 if (a == 0) {
   console.log(1);
 }
-a = "1a";
+a = "1";
 if (a == 1) {
   console.log(1);
 }
