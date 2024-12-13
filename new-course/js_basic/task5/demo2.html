@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>为什么需要理解数据引用</title>
+</head>
+<body>
+
+    <script>
+        var a = [1, 2, 3];
+        // 糟糕的写法，传入后实际上原来的数组的值也被改变了
+        function getArrayEveryNumberDouble(data){
+            for(var i = 0; i < data.length; i++){
+                data[i] = data[i] * 2;
+            }
+            return data;
+        }
+        console.log("原来的数组", a);
+        console.log("每个数字变成两倍的数组", getArrayEveryNumberDouble(a));
+    </script>
+</body>
+</html>
+

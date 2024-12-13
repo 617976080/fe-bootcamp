@@ -52,14 +52,34 @@
             var value = $input.value;
             console.log("debug: value is");
             console.log(value);
+            // 没有考虑类型的写法，导致输入0的时候有bug
             if(!value){
                 $result.innerText = "输入不能为空";
+            }
+            
+            // 改进1：至少不会有bug了，但是类型转换太复杂了，别人看这个代码很难理解
+            // if(value == ""){
+            //     $result.innerText = "输入不能为空";
+            // }
+
+            // 改进2：更严谨了，但是很繁琐
+            // if(value === "" || value === undefined || value === null){
+            //     $result.innerText = "输入不能为空";
+            // }
+
+            // 改进3：先转换成字符串，然后看是不是为空
+            // if(String(value) === ""){
+            //     $result.innerText = "输入不能为空";
+            // }
+
+            // 改进4：满分代码，兼具严谨和清晰
+            if(!String(value).trim()){
+                $result.innerText = "输入不能为空"
             }
         }
         validateInput();
         // 监听输入事件
-        $input.addEventListener('input', validateInput);
-
+        $input.addEventListener('input', validateInput);    
     </script>
 </body>
 </html>
