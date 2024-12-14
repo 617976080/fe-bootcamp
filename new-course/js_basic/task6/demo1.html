@@ -29,23 +29,26 @@
 </head>
 <body>
     <div class="container">
-        <input type="number" id="num1" placeholder="0">
+        <input  id="num1" placeholder="0">
         <span>+</span>
-        <input type="number" id="num2" placeholder="0">
+        <input  id="num2" placeholder="0">
         <button class="submit-button" onClick="calculate()">=</button>
         <span id="result"></span>
     </div>
     <script>
         function calculate() {
             // 获取输入的数值
-            var a = parseInt(document.getElementsById('num1').value) || 0; 
-            var b = parseInt(document.getElementsById('num2').value) || 0;
-
+            var a = parseInt(document.getElementById('num1').value) || 0;
+            var b = parseInt(document.getElementById('num2').value) || 0;
             // 计算结果
             var sum = a + b;
 
             document.getElementById('result').innerText = sum;
         }
     </script>
+    <!-- 思路
+    1. 实现点击按钮后执行一段逻辑？ ->  onClick属性去调用一个函数 / addEventListener
+    2. 拿到输入框的值并做计算 -> 利用getElementById拿到值，使用parseInt做类型转换。
+    3. 修改结果区域的值 -> 利用innerText属性实现展示 -->
 </body>
 </html>

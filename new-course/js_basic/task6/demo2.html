@@ -66,5 +66,14 @@
             calculator.querySelector('.result').textContent = sum;
         }
     </script>
+<!-- 
+    思路
+    1. 实现增加一行
+        a. 利用dom api，创建一个元素，然后设置属性。
+        b. 然后设置innerHTML修改它的元素内容。
+        c. 最后将我们创建出来的元素挂在现有的容器下，实现展示。
+    2. 实现点击第N行的时候，我们能识别到，并做加法和呈现逻辑。
+        a. 利用一个全局变量index,在第一步创建每一行元素的时候，执行的是calculate(index)，然后index递增。这样就实现第N行调用的是calculate(N - 1)，这里因为下标是从0开始，所以是N - 1。
+        b. 利用querySelectorAll拿到所有的行的元素，通过index找到它，找到一行的容器元素后，再利用querySelector拿到两个加数，做呈现。 -->
 </body>
 </html>

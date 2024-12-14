@@ -53,7 +53,9 @@
             console.log("debug: value is");
             console.log(value);
             // 没有考虑类型的写法，导致输入0的时候有bug
-            if(!value){
+            if(value){
+                $result.innerText = ""
+            }else{
                 $result.innerText = "输入不能为空";
             }
             

@@ -5,7 +5,7 @@ https://developer.mozilla.org/zh-CN/docs/Web/API/Document_Object_Model/Locating_
 https://developer.mozilla.org/zh-CN/docs/Web/API/Element/setAttribute
 ## 课程任务
 
-### 任务一
+### 练习一
 https://developer.mozilla.org/zh-CN/docs/Learn/JavaScript/Objects - JS对象入门
 https://developer.mozilla.org/zh-CN/docs/Learn/JavaScript/Objects/Basics - JS对象基础
 https://developer.mozilla.org/zh-CN/docs/Web/API/Document/getElementById - 通过id获得元素
@@ -17,5 +17,5 @@ https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects
 学习方法：按照需要做的task去问AI查资料做出任务，感兴趣的看看手册。
 完成demo1的效果，一个简单的整数计算器。
 
-### 任务二
+### 练习二
 完成demo2的效果，可以动态添加多个等式，分别计算出结果，支持小数的计算。
