@@ -1,18 +1,28 @@
 # JS Basic Task Three - JS入门(Part3: 常见交互练习)
 ### 练习一：使用数组常用API
 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
+https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/map
 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce
 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/fromEntries
 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/entries
 
 阅读上面的资料，完成下面函数的内容的实现
 ```javascript
-// 1. 求一个数组中所有元素的乘积，试着用不同的方法来做，尽量让代码简洁易读
+// 1. 返回一个数组每个元素的2倍
+var a = [1, 2, 3];
+// 糟糕的写法，传入后实际上原来的数组的值也被改变了
+function getArrayEveryNumberDouble(data){
+    // ......
+}
+console.log("原来的数组", a);
+console.log("每个数字变成两倍的数组", getArrayEveryNumberDouble(a));
+
+// 2. 求一个数组中所有元素的乘积，试着用不同的方法来做，尽量让代码简洁易读
 function getResult(arr){
   // ...
 }
 console.log(getResult([1, 2, 3])); // 输出6
-// 2. 数组转对象
+// 3. 数组转对象
 function convertMapToList(optionsList){
   //...
 }
@@ -22,7 +32,7 @@ var data = {
 }
 var list = convertMapToList(data);
 console.log(list);
-// 3. 数组转对象
+// 4. 数组转对象
 function convertListToMap(optionsList){
   //...
 }
