@@ -12,6 +12,7 @@ https://developer.mozilla.org/zh-CN/docs/Web/API/Document/getElementById - 通�
 https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLInputElement#%E5%AE%9E%E4%BE%8B%E6%96%B9%E6%B3%95 - HTML里Input元素的属性和方法
 https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/innerText - 获取和修改一个元素的文本内容
 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/parseInt - 将一个字符串解析成数字
+https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Template_literals - 模板字符串
 
 巧妙利用AI机器人来查资料。
 学习方法：按照需要做的task去问AI查资料做出任务，感兴趣的看看手册。

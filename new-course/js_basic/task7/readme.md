@@ -6,7 +6,22 @@ https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects
 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/fromEntries
 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/entries
 
-阅读上面的资料，完成下面函数的内容的实现
+阅读上面的资料，完成下面函数的内容的实现，API（Application Interface）
+```javascript
+var arr = ["a", "b", "c"];
+arr.forEach(function(item){
+    console.log(item);
+});
+
+function myForEach(array, callback){
+  for(var i = 0; i < array.length; i++){
+    callback(array[i], i);
+  }
+}
+myForEach(arr, function(item){
+  console.log(item);
+});
+```
 ```javascript
 // 1. 返回一个数组每个元素的2倍
 var a = [1, 2, 3];
@@ -61,6 +76,30 @@ https://developer.mozilla.org/zh-CN/docs/Learn/JavaScript/Objects/Object_prototy
 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/this - 很复杂，导师带着学
 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/call - 导师带着学
 
+关键字
+```javascript
+var arr = ["a", "b", "c"];
+arr.forEach(function(item){
+    console.log(item);
+});
+
+
+arr.myForEach = function(callbackFn){
+  for(var i = 0; i < this.length; i++){
+    callbackFn(arr[i], i);
+  }
+}
+
+// 实现这个
+arr.myForEach(function(item){
+  console.log(item);
+});
+
+arr.myForEach(function(item, index){
+  console.log(item, index);
+});
+
+```
 
 ### 练习三： 实现一个简单选项卡
 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/for...of - for of语法
