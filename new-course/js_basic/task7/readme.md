@@ -74,8 +74,9 @@ console.log(optionsMap);
 ### 练习二：认识this、原型和bind、call、apply
 https://developer.mozilla.org/zh-CN/docs/Learn/JavaScript/Objects/Object_prototypes - 导师带着学
 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/this - 很复杂，导师带着学
+https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/bind - 绑定
 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/call - 导师带着学
-
+https://developer.mozilla.org/zh-CN/docs/Glossary/Scope - 作用域
 关键字
 ```javascript
 var arr = ["a", "b", "c"];
@@ -84,22 +85,86 @@ arr.forEach(function(item){
 });
 
 
-arr.myForEach = function(callbackFn){
+// 1. 实现arr.myForEach
+var myForEach = function(callbackFn){
+  console.log("debug:", this)
   for(var i = 0; i < this.length; i++){
-    callbackFn(arr[i], i);
+    callbackFn(this[i], i);
   }
 }
 
-// 实现这个
-arr.myForEach(function(item){
-  console.log(item);
-});
+const arr2 = ["d", "e", "f"];
+arr2.myForEach = myForEach;
+arr.myForEach = myForEach;
 
 arr.myForEach(function(item, index){
   console.log(item, index);
 });
+arr2.myForEach(function(item, index){
+  console.log(item, index);
+});
 
+// 2. this指向的问题
+const fakeForEach = arr.myForEach;
+fakeForEach(function(item){
+  console.log(item);
+});
+
+// 3. 如何解决this指向的问题，解法1 - bind函数
+arr.myForEach = function(callbackFn){
+  for(var i = 0; i < this.length; i++){
+    callbackFn(arr[i], i);
+  }
+}.bind(arr);
+const fakeForEach = arr2.myForEach;
+fakeForEach(function(item){
+  console.log(item);
+});
+
+
+// 4. var和let的作用域区别 - 以及bind函数的运用
+for(var i = 0; i < 10; i++){
+  setTimeout(function(){
+    console.log(i);
+  }, 1000);
+}
+for(let i = 0; i < 10; i++){
+  setTimeout(function(){
+    console.log(i);
+  }, 1000);
+}
+
+for(var i = 0; i < 10; i++){
+  setTimeout(function(i){
+    console.log(i);
+  }.bind(null, i), 1000);
+}
+
+// 5. call的运用
+/* 在html里加上一个无序列表
+<ul id="list">
+  <li>item1</li>
+  <li>item2</li>
+</ul>
+*/
+var listItems = document.getElementById('list').children;
+// 提问： 这个listItems是什么类型？
+
+
+
+// 6. 初步认识原型 - 原型的作用
+Array.prototype.myGlobalForEach = function(callbackFn){
+  for(var i = 0; i < this.length; i++){
+    callbackFn(this[i], i);
+  }
+}
+
+const arr2 = ["d", "e", "f"];
+arr2.myGlobalForEach(function(item){
+    console.log(item);
+});
 ```
+
 
 ### 练习三： 实现一个简单选项卡
 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/for...of - for of语法

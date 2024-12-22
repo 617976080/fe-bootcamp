@@ -123,9 +123,11 @@
       toggle(0);
 
     }
+
+    // 遍历出所有的tab，依次调用hanleTab组件
     $tabs = document.querySelectorAll(".tab");
     for(var $tab of $tabs){
-      handleTab($tabs[i]);
+      handleTab($tab);
     }
   </script>
 </body>
