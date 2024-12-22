@@ -91,31 +91,40 @@
       var $contents = $el.querySelector(".tab-body").children;
       var lastIndex = null;
 
+      // 创建一个下划线元素，并加到header里
       var $underline = document.createElement("div");
       $underline.setAttribute("class", "underline");
       $underline.setAttribute("display", "none");
       $header.append($underline);
 
+      // 将所有的内容隐藏
       for(var $content of $contents){
         $content.style.display = "none";
       }
+
+      // 给所有的标题增加点击事件，点击的时候执行toggle(i)
       Array.prototype.forEach.call($titles, ($title, i) => {
         $title.addEventListener("click", () => {
           toggle(i);
         });
       });
+
       function toggle(i) {
+        // 有上一个切换的元素，把上一个元素的标题的激活去掉，内容隐藏
         if (lastIndex !== null) {
           $titles[lastIndex].setAttribute("class", "");
           $contents[lastIndex].setAttribute("style", "display: none");
-        } else {
+        } else {// 如果没有上一个切换的元素，说明是第一次点击，得把下划线展示出来
           $underline.setAttribute("style", "display: block");
         }
 
+        // 将当前标题设置为激活态，展示当前内容，将下划线移动到当前tab下
         var $currentTitle = $titles[i];
         $contents[i].setAttribute("style", "display: block");
         $currentTitle.setAttribute("class", "active");
         $underline.setAttribute("style", "left: " + $currentTitle.offsetLeft + "px; width:" + $currentTitle.clientWidth + "px;");
+
+        // 更新上一个元素这个变量的值，供下次使用
         lastIndex = i;
       }
 
