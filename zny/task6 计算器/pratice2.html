@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一二的高级加法计算器-仅皇室成员可用农民禁止使用</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .calculator {
+            text-align: center;
+        }
+        input {
+            width: 50px;
+            font-size: 18px;
+            margin: 0 5px;
+        }
+        button {
+            font-size: 18px;
+            margin: 0 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <button id="append" onClick="append()">添加一行</button>
+    </div>
+
+    <script>
+        let index=0;
+       function append(){
+        var div = `<div class="container"><input type="number" class="num1" placeholder="0"><span>+</span><input type="number" class="num2" placeholder="0"><button class="submit-button" onClick="calcu(${index})">=</button><span class="result"></span></div>`;
+        document.getElementById("main").innerHTML += div;
+        index=index+1;    
+    }
+    
+    function calcu(x){
+        const num1 = parseFloat(document.querySelectorAll(".num1")[x].value)|| 0;
+        const num2 = parseFloat(document.querySelectorAll(".num2")[x].value) || 0;
+        document.querySelectorAll(".result")[x].textContent = num1 + num2;
+        }
+    </script>
+</body>
+</html>

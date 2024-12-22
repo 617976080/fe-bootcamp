@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一二的加法计算器-仅皇室成员可用农民禁止使用</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .calculator {
+            text-align: center;
+        }
+        input {
+            width: 50px;
+            font-size: 18px;
+            margin: 0 5px;
+        }
+        button {
+            font-size: 18px;
+            margin: 0 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <input type="number" id="num1" placeholder="0">
+        <span>+</span>
+        <input type="number" id="num2" placeholder="0">
+        <button class="submit-button">=</button>
+        <span id="result"></span>
+    </div>
+    <script>
+        const btn = document.querySelector(".submit-button");
+        btn.addEventListener("click",calcu);
+
+        function calcu(){
+        const num1 = parseFloat(document.getElementById('num1').value) || 0;
+        const num2 = parseFloat(document.getElementById('num2').value) || 0;
+        document.getElementById("result").textContent = num1 + num2;
+        }
+    </script>
+</body>
+</html>

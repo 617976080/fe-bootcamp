@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简单的加法计算器</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .calculator {
+            text-align: center;
+        }
+        input {
+            width: 50px;
+            font-size: 18px;
+            margin: 0 5px;
+        }
+        button {
+            font-size: 18px;
+            margin: 0 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <button id="append">添加一行</button>
+    </div>
+
+    <script>
+        var $main = document.querySelector("#main");
+        var $append = document.querySelector("#append");
+        var index = 0;
+        $append.addEventListener("click", function(){
+            const newCalculator = document.createElement("div");
+            newCalculator.setAttribute("class", "calculator");
+            newCalculator.innerHTML = `
+                <input type="number" class="num1" placeholder="0">
+                <span>+</span>
+                <input type="number" class="num2" placeholder="0">
+                <button class="submit-button" onClick="calculate(${index})">=</button>
+                <span class="result"></span>
+            `;
+            $main.appendChild(newCalculator);
+            index++;
+        });
+
+
+        function calculate(i) {
+            var calculator = document.querySelectorAll('.calculator')[i];
+            // 获取输入的数值
+            // 第一个值是Falsy就往后执行，boolean -> false，"", null
+            var a = parseFloat(calculator.querySelector('.num1').value) || 0; 
+            var b = parseFloat(calculator.querySelector('.num2').value) || 0;
+
+            // 计算结果
+            var sum = a + b;
+            // 结果
+
+            // 显示结果 -> 副作用
+            calculator.querySelector('.result').textContent = sum;
+        }
+    </script>
+<!-- 
+    思路
+    1. 实现增加一行
+        a. 利用dom api，创建一个元素，然后设置属性。
+        b. 然后设置innerHTML修改它的元素内容。
+        c. 最后将我们创建出来的元素挂在现有的容器下，实现展示。
+    2. 实现点击第N行的时候，我们能识别到，并做加法和呈现逻辑。
+        a. 利用一个全局变量index,在第一步创建每一行元素的时候，执行的是calculate(index)，然后index递增。这样就实现第N行调用的是calculate(N - 1)，这里因为下标是从0开始，所以是N - 1。
+        b. 利用querySelectorAll拿到所有的行的元素，通过index找到它，找到一行的容器元素后，再利用querySelector拿到两个加数，做呈现。 -->
+</body>
+</html>
