@@ -47,6 +47,9 @@
       cursor: pointer;
       font-size: 16px;
     }
+    .tab .tab-header li.active{
+      font-weight: bold;
+    }
 
     .tab .tab-body {
       width: 100%;
@@ -89,7 +92,7 @@
       var $header = $el.querySelector(".tab-header");
       var $titles = $header.children;
       var $contents = $el.querySelector(".tab-body").children;
-      var lastIndex = null;
+      var lastIndex = null; // 存上一个切换的选项卡的下标
 
       // 创建一个下划线元素，并加到header里
       var $underline = document.createElement("div");
@@ -127,14 +130,12 @@
         // 更新上一个元素这个变量的值，供下次使用
         lastIndex = i;
       }
-
       // 初始化第一个tab展示
       toggle(0);
-
     }
 
     // 遍历出所有的tab，依次调用hanleTab组件
-    $tabs = document.querySelectorAll(".tab");
+    const $tabs = document.querySelectorAll(".tab");
     for(var $tab of $tabs){
       handleTab($tab);
     }
