@@ -49,10 +49,7 @@
             
             function animate() {
                 if (frames < maxFrames) {
-                    position += speed;
-                    if (position > containerWidth - ballWidth) {
-                        position = containerWidth - ballWidth;
-                    }
+                    position = Math.min(position + speed, containerWidth - ballWidth);
                     ball.style.left = position + 'px';
                     frames++;
                     setTimeout(animate, 16); // 尝试以约60fps的速度运行
@@ -64,4 +61,3 @@
     </script>
 </body>
 </html>
-

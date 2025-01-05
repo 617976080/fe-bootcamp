@@ -25,19 +25,17 @@ myForEach(arr, function(item){
 ```javascript
 // 1. 返回一个数组每个元素的2倍
 var a = [1, 2, 3];
-// 糟糕的写法，传入后实际上原来的数组的值也被改变了
 function getArrayEveryNumberDouble(data){
     // ......
 }
-console.log("原来的数组", a);
-console.log("每个数字变成两倍的数组", getArrayEveryNumberDouble(a));
+console.log(getArrayEveryNumberDouble(a)); // 输出 [2, 4, 6]
 
 // 2. 求一个数组中所有元素的乘积，试着用不同的方法来做，尽量让代码简洁易读
 function getResult(arr){
   // ...
 }
 console.log(getResult([1, 2, 3])); // 输出6
-// 3. 数组转对象
+// 3. 对象转数组
 function convertMapToList(optionsList){
   //...
 }
@@ -47,6 +45,19 @@ var data = {
 }
 var list = convertMapToList(data);
 console.log(list);
+/**
+ * 输出[
+ *  {
+ *    value: 'man',
+ *    label: '男‘ 
+ *  },
+ *  {
+ *    value: 'woman',
+ *    label: '女'
+ *  }
+ * ]
+**/
+
 // 4. 数组转对象
 function convertListToMap(optionsList){
   //...
