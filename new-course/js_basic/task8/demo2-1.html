@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简单的动画示例（带有缺陷）</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        #container {
+            width: 300px;
+            height: 50px;
+            background-color: #fff;
+            position: relative;
+            border: 1px solid #000;
+        }
+        #ball {
+            width: 50px;
+            height: 50px;
+            background-color: #ff4500;
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="ball"></div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            var ball = document.getElementById('ball');
+            var container = document.getElementById('container');
+            var containerWidth = container.offsetWidth;
+            var ballWidth = ball.offsetWidth;
+            
+            var position = 0;
+            var speed = 2; // 每帧移动的像素数
+            var frames = 0;
+            var maxFrames = 150; // 假设动画应该在150帧内完成
+            
+            function animate() {
+                if (frames < maxFrames) {
+                    position += speed;
+                    if (position > containerWidth - ballWidth) {
+                        position = containerWidth - ballWidth;
+                    }
+                    ball.style.left = position + 'px';
+                    frames++;
+                    setTimeout(animate, 16); // 尝试以约60fps的速度运行
+                }
+            }
+            
+            animate();
+        };
+    </script>
+</body>
+</html>
+
