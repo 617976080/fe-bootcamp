@@ -49,6 +49,15 @@ sleep2(3)
     console.log("5秒后输出3");
 });
 
+// 使用async await优化
+async function output(){
+    console.log("输出1");
+    await sleep2(3);
+    console.log("3秒后输出2");
+    return sleep2(5);
+    console.log("5秒后输出3");
+}
+output();
 ```
 
 查看demo2的效果，这是我让dev0帮忙写的demo，功能如下：
