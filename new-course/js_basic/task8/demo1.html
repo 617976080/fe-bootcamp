@@ -69,10 +69,13 @@
             $startBtn.disabled = true;
             countdownID = setInterval(function() {
                 timeLeft--;
-                updateDisplay();
-                if (timeLeft <= 0) {
-                    clearInterval(countdownID);
+                if (timeLeft < 0) {
+                    timeLeft = INIT_TIME_LEFT;
+                    updateDisplay();
                     $startBtn.disabled = false;
+                    clearInterval(countdownID);
+                }else{
+                    updateDisplay();
                 }
             }, 1000);
         }
