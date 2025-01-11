@@ -53,5 +53,8 @@ babel是用JS编写的。
 #### CRA
 创建一个React的SPA(Single page app)应用
 
+#### webpack
+构建打包
+
 ### 任务二：React入门
 看一遍基本概念后，看官方的tutorial，这个过程中遇到不会的回去翻main concepts或者去翻官方的api，跟着tutorial完成任务（代码写在使用Next.js创建的工程里）。
