@@ -1,10 +1,64 @@
-<label for="weather">选择今天的天气：</label>
-<select id="weather">
-  <option value="">--作出选择--</option>
-  <option value="sunny">晴天</option>
-  <option value="rainy">雨天</option>
-  <option value="snowing">雪天</option>
-  <option value="overcast">阴天</option>
-</select>
+// 1. 返回一个数组每个元素的2倍
+var a = [1, 2, 3];
+function getArrayEveryNumberDouble(data){
+  let myarray=[];
+  data.forEach(function(item){
+    myarray.push(item*2); });
+    return myarray;
+}
+console.log(getArrayEveryNumberDouble(a)); // 输出 [2, 4, 6]
 
-<p></p>
+// 2. 求一个数组中所有元素的乘积，试着用不同的方法来做，尽量让代码简洁易读
+function getResult(arr){
+  let calcu=1
+  arr.forEach(function(item){
+    calcu=calcu*item; });
+    return calcu;
+}
+console.log(getResult([1, 2, 3])); // 输出6
+// 3. 对象转数组
+function convertMapToList(optionsList){
+  //...
+}
+var data = {
+  man: '男',
+  woman: '女'
+}
+var list = convertMapToList(data);
+console.log(list);
+/**
+ * 输出[
+ *  {
+ *    value: 'man',
+ *    label: '男‘ 
+ *  },
+ *  {
+ *    value: 'woman',
+ *    label: '女'
+ *  }
+ * ]
+**/
+
+// 4. 数组转对象
+function convertListToMap(optionsList){
+  //...
+}
+var optionsList = [
+  {
+    value: 'man',
+    label: '男',
+  },
+  {
+    value: 'woman',
+    label: '女'
+  }
+]
+var optionsMap = convertListToMap(optionsList);
+console.log(optionsMap);
+/**
+输出：
+{
+  man: '男',
+  woman: '女'
+}
+**/
