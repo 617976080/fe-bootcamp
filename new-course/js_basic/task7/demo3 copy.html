@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>tab demo</title>
+  <style>
+    /*  reset */
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul,
+    li {
+      text-decoration: none;
+    }
+
+    .tab {
+      width: 100%;
+    }
+
+    .tab .tab-header {
+      position: relative;
+      width: 100%;
+      height: 46px;
+      margin-bottom: 16px;
+      display: flex;
+      border-bottom: 1px solid rgb(240, 240, 240);
+    }
+
+    .tab .underline {
+      position: absolute;
+      /* width: 100px; */
+      height: 2px;
+      bottom: -1px;
+      background-color: #1890ff;
+      transition: 0.3s;
+    }
+
+    .tab .tab-header li {
+      height: 100%;
+      margin: 0 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .tab .tab-header li.active{
+      font-weight: bold;
+    }
+
+    .tab .tab-body {
+      width: 100%;
+    }
+
+    .tab .tab-content {
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="tab">
+    <ul class="tab-header">
+      <li>tabTitle1</li>
+      <li>tabTitle2</li>
+      <li>tabTitle3</li>
+    </ul>
+    <div class="tab-body">
+      <div class="tab-content">内容1</div>
+      <div class="tab-content">内容2</div>
+      <div class="tab-content">内容3</div>
+    </div>
+  </div>
+
+  <div class="tab">
+    <ul class="tab-header">
+      <li>tabTitle1</li>
+      <li>tabTitle2</li>
+      <li>tabTitle3</li>
+    </ul>
+    <div class="tab-body">
+      <div class="tab-content">内容1</div>
+      <div class="tab-content">内容2</div>
+      <div class="tab-content">内容3</div>
+    </div>
+  </div>
+ <script>
+  var tabs = document.querySelectorAll(".tab");
+  for (var tab of tabs){
+    handeltab(tab);
+  } 
+
+  function handeltab(x){
+    let header=x.querySelector(".tab-header");
+    let titles=header.children;
+    let contents=x.querySelectorAll(".tab-content");
+    let lastindex;
+
+    for (var content of contents){
+    content.setAttribute("style", "display:none");
+  } 
+
+    Array.prototype.forEach.call(titles,function (title,index){
+      title.onclick=function (){
+        runtitle(index);};
+    });
+
+    function runtitle(index){
+      if (lastindex !== undefined) {contents[lastindex].setAttribute("style","display:none");};
+      contents[index].setAttribute("style","display:block");
+      lastindex=index;
+    }
+    runtitle(0);
+  }
+ </script>
+</body>
+
+</html>
