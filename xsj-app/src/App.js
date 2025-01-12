@@ -1,44 +1,33 @@
 import './App.css';
-import CountDemo from './CountDemo';
-import SingleCalculatorError from './SingleCalculatorError';
-import SingleCalculator from './SingleCalculator';
-import HideTitleCalcularDemo from './HideTitleCalculatorDemo';
-import MultipleCalculatorDemo from './MultipleCalculatorDemo';
-import { useState } from 'react';
-import { Tabs, TabPane, Button } from '@douyinfe/semi-ui';
+import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
+import { Nav, Button } from '@douyinfe/semi-ui';
+import { IconDescriptions, IconIntro, IconTree, IconAvatar, IconTreeSelect, IconTabs } from '@douyinfe/semi-icons-lab';
+import Practice1 from './Practice1';
+import Page2 from './Page2';
 
-function App(){
-  const [activeKey, setActiveKey] = useState("SingleCalculator");
-  const handleToggleToLatest = () => {
-    setActiveKey("MultipleCalculatorDemo");
-  }
-  const handleChangeTab = (newActiveKey) => {
-    if(newActiveKey !== "HideTitleCalcularDemo"){
-      setActiveKey(newActiveKey);
-    }else{
-      window.alert("这是付费内容，你不能查看");
-    }
+
+
+function App() {
+  const navigate = useNavigate();
+  // 解构语法
+  // 相当于
+  // const handleToggleNav = (params) => { const itemKey = params.itemKey }
+  const handleToggleNav = ({ itemKey }) => {
+    navigate(itemKey);
   }
   return (
     <div>
-      <Tabs activeKey={activeKey} onChange={handleChangeTab}>
-        <TabPane tab="计数器Demo" itemKey="countDemo">
-          <CountDemo />
-        </TabPane>
-        <TabPane tab="有问题的单个计算器"  itemKey="SingleCalculatorError">
-          <SingleCalculatorError />
-        </TabPane>
-        <TabPane tab="正确的单个计算器"  itemKey="SingleCalculator">
-          <SingleCalculator />
-        </TabPane>
-        <TabPane tab="付费内容-隐藏标题的计算器"  itemKey="HideTitleCalcularDemo">
-          <HideTitleCalcularDemo />
-        </TabPane>
-        <TabPane tab="完整版支持添加多个计算器的用例"  itemKey="MultipleCalculatorDemo">
-          <MultipleCalculatorDemo />
-        </TabPane>
-      </Tabs>
-    <Button onClick={handleToggleToLatest}>切换到最后一个</Button>
+      <Nav
+        onClick={handleToggleNav}
+        items={[
+          { itemKey: '/demo', text: '昨天的task', icon: <IconAvatar /> },
+          { itemKey: '/bubu', text: '布布开场白', icon: <IconDescriptions /> },
+        ]}
+      />
+      <Routes>
+        <Route Component={Practice1} path='/demo' />
+        <Route Component={Page2} path='/bubu' />
+      </Routes>
     </div>
   )
 }
