@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简单的动画示例（带有缺陷）</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        #container {
+            width: 300px;
+            height: 50px;
+            background-color: #fff;
+            position: relative;
+            border: 1px solid #000;
+        }
+        #ball {
+            width: 50px;
+            height: 50px;
+            background-color: #ff4500;
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div>点击小球开始滑动</div>
+    <div id="container">
+        <div id="ball"></div>
+    </div>
+
+    <script>
+
+        var ball = document.getElementById('ball');
+        var container = document.getElementById('container');
+        var final_position = container.offsetWidth-ball.offsetWidth;
+
+        let ball_position = 0;
+        ball.addEventListener("click",ballrun);
+        
+        function ballrun(){
+        setInterval(()=>{ball_position=ball_position+2;
+            if (ball_position > final_position){ball_position=final_position;};
+            ball.style.left = ball_position + 'px';},16);
+        }
+        
+            
+
+    </script>
+</body>
+</html>
