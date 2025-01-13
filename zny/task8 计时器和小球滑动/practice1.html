@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简单倒计时演示</title>
+    <style>
+        .container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        #timer {
+            font-size: 48px;
+            margin: 20px 0;
+        }
+
+        button {
+            font-size: 16px;
+            padding: 10px 20px;
+            margin: 0 10px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>倒计时器</h1>
+        <div id="timer">5</div>
+        <button id="startBtn">开始倒计时</button>
+        <button id="resetBtn">重置</button>
+    </div>
+    <script>
+    let startBtn=document.getElementById("startBtn");
+    let resetBtn=document.getElementById("resetBtn");
+    let timer=document.getElementById("timer");
+    
+ // 点击开始按钮部分的代码：点击开始倒计时按钮disabled，每一秒少一个数字，从5到1共5秒，1之后恢复初始状态5，两个按钮又可以再次点击
+    startBtn.addEventListener("click",start_time_count)
+    function start_time_count(){
+    startBtn.setAttribute('disabled',true);
+    countdown=setInterval(() => {
+        timer.textContent--;
+        if (timer.textContent === "0") {timer.textContent=5;startBtn.removeAttribute('disabled',true);clearInterval(countdown);};
+        }, 1000)
+    }
+
+  //重制按钮部分的代码：点击后倒计时恢复5
+    resetBtn.addEventListener("click",reset_time);
+    function reset_time(){
+        clearInterval(countdown);
+        timer.textContent=5;
+        startBtn.removeAttribute('disabled',true);
+    }
+    </script>
+   
+
+</body>
+
+</html>
