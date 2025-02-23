@@ -9,6 +9,7 @@ https://react.dev/learn
 https://www.typescriptlang.org/zh/docs/handbook/typescript-in-5-minutes.html
 https://www.runoob.com/typescript/ts-basic-syntax.html
 
+JavaScript 弱类型/自动类型的语言。
 ### 任务二
 认识React生命周期和useEffect，重写计时器demo，参考资料：
 1. life cycle
